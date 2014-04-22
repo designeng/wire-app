@@ -37,6 +37,7 @@ define [
 
             # create iframe
             iframe = document.body.ownerDocument.createElement('iframe')
+            iframe.classList.add("jasminePlayground")
             document.body.appendChild(iframe)
             iframe.src = urlToLoad
             harness = iframe.contentWindow

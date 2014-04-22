@@ -118,7 +118,7 @@ require.config({
   },
   paths: {
     "bootstrapSpec": "core/bootstrapSpec",
-    "routerMainSpec": "specs/routerMainSpec"
+    "routerMainSpec": "core/routerMainSpec"
   }
 });
 
