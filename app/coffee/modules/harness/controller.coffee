@@ -10,9 +10,6 @@ define [
         global: undefined
 
         # @injected
-        harnessUrl: undefined
-
-        # @injected
         getRequireJsConfig: undefined
 
         # @injected
@@ -26,7 +23,7 @@ define [
         callbackKey: 'harnessCallback'
 
         onItemClick: (item) ->
-            urlToLoad = @getBaseUrl() + item.url
+            # urlToLoad = @getBaseUrl() + item.url
 
             # remove iframe first
             i = 0
@@ -39,7 +36,7 @@ define [
             iframe = document.body.ownerDocument.createElement('iframe')
             iframe.classList.add("jasminePlayground")
             document.body.appendChild(iframe)
-            iframe.src = urlToLoad
+            iframe.src = "/test/jasmine/index.html"
             harness = iframe.contentWindow
 
             loadConfig = () =>
@@ -48,7 +45,7 @@ define [
                 scriptConfig.onload = () ->
                     _require = harness.require
                     _require ["wire"], (wire) ->
-                        harness.runTests(wire)
+                        # harness.runTests(wire)
                         
                 scriptConfig.onerror =  () ->
                     console.log 'could not load requireConfig!'

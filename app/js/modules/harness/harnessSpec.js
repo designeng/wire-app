@@ -61,8 +61,7 @@ define({
       },
       getRequireJsConfig: {
         $ref: "getRequireJsConfig"
-      },
-      harnessUrl: "js/controls/tablecontrol/test/harness.html"
+      }
     },
     connect: {
       'testsCollection.onEdit': 'onItemClick'

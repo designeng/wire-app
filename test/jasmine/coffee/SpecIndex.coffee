@@ -8,5 +8,5 @@ define ->
         # "resultTableFilter/index"
         # "mixin/index"
         # "mixin/onHtmlClickMixin"
-        "mixin/keyactive/keyactivePlugin"
+        # "mixin/keyactive/keyactivePlugin"
     ]

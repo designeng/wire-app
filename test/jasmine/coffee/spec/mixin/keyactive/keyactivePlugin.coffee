@@ -17,12 +17,10 @@ define [
     rootSpec = 
         $plugins: [
             "wire/debug"
-            "core/plugin/mousetrapPlugin"
         ]
 
         view:
             create: "switchControl"
-            keys: ["up"]
 
 
     # ------------- test suites --------------------------

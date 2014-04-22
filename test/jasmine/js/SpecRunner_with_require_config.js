@@ -54,10 +54,6 @@ require.config({
       main: "Backbone.CollectionBinder",
       location: "../../bower_components/Backbone.ModelBinder"
     }, {
-      name: "mousetrap",
-      main: "mousetrap",
-      location: "../../bower_components/mousetrap"
-    }, {
       name: "jquery",
       main: "jquery",
       location: "../../bower_components/jquery/dist"

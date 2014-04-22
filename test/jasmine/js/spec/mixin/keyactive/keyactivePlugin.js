@@ -20,10 +20,9 @@ define(["wire", "marionette"], function(wire, Marionette) {
     })(Marionette.CompositeView);
   });
   rootSpec = {
-    $plugins: ["wire/debug", "core/plugin/mousetrapPlugin"],
+    $plugins: ["wire/debug"],
     view: {
-      create: "switchControl",
-      keys: ["up"]
+      create: "switchControl"
     }
   };
   return describe("keyactivePlugin suite", function() {

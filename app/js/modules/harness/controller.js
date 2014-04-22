@@ -5,8 +5,6 @@ define(["require", "when", "jquery"], function(require, When, $) {
 
     HarnessController.prototype.global = void 0;
 
-    HarnessController.prototype.harnessUrl = void 0;
-
     HarnessController.prototype.getRequireJsConfig = void 0;
 
     HarnessController.prototype.getBaseUrl = void 0;
@@ -18,9 +16,8 @@ define(["require", "when", "jquery"], function(require, When, $) {
     HarnessController.prototype.callbackKey = 'harnessCallback';
 
     HarnessController.prototype.onItemClick = function(item) {
-      var harness, i, iframe, iframes, loadConfig, urlToLoad,
+      var harness, i, iframe, iframes, loadConfig,
         _this = this;
-      urlToLoad = this.getBaseUrl() + item.url;
       i = 0;
       iframes = document.getElementsByTagName('iframe');
       while (i < iframes.length) {
@@ -30,7 +27,7 @@ define(["require", "when", "jquery"], function(require, When, $) {
       iframe = document.body.ownerDocument.createElement('iframe');
       iframe.classList.add("jasminePlayground");
       document.body.appendChild(iframe);
-      iframe.src = urlToLoad;
+      iframe.src = "/test/jasmine/index.html";
       harness = iframe.contentWindow;
       loadConfig = function() {
         var doc, scriptConfig;
@@ -39,9 +36,7 @@ define(["require", "when", "jquery"], function(require, When, $) {
         scriptConfig.onload = function() {
           var _require;
           _require = harness.require;
-          return _require(["wire"], function(wire) {
-            return harness.runTests(wire);
-          });
+          return _require(["wire"], function(wire) {});
         };
         scriptConfig.onerror = function() {
           return console.log('could not load requireConfig!');
