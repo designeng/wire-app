@@ -23,7 +23,6 @@ define [
         callbackKey: 'harnessCallback'
 
         onItemClick: (item) ->
-            # urlToLoad = @getBaseUrl() + item.url
 
             # remove iframe first
             i = 0
@@ -36,6 +35,7 @@ define [
             iframe = document.body.ownerDocument.createElement('iframe')
             iframe.classList.add("jasminePlayground")
             document.body.appendChild(iframe)
+            
             iframe.src = "/test/jasmine/index.html"
             harness = iframe.contentWindow
 
@@ -45,7 +45,7 @@ define [
                 scriptConfig.onload = () ->
                     _require = harness.require
                     _require ["wire"], (wire) ->
-                        # harness.runTests(wire)
+                        harness.runTests(item.url)
                         
                 scriptConfig.onerror =  () ->
                     console.log 'could not load requireConfig!'
@@ -68,7 +68,7 @@ define [
             @conf = @getRequireJsConfig()
 
         loadHarness: (playground) ->
-            @playground = playground.$el.find(".playground")
+            # @playground = playground.$el.find(".playground")
 
         afterChildLoad: (target) ->
             console.log "_____afterChildLoad", target

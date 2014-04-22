@@ -118,7 +118,7 @@ module.exports = (grunt) ->
                 dest: "prebuild/js/main.js"
             jasmine:
                 src: ["app/js/requireConfig.js", "test/jasmine/js/SpecRunner.js"]
-                dest: "test/jasmine/js/SpecRunner_with_require_config.js"
+                dest: "test/jasmine/js/supermain.js"
 
 
     grunt.loadNpmTasks "grunt-contrib-watch"

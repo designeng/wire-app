@@ -1,3 +1,5 @@
+var runTests;
+
 requirejs.s.contexts._.config.paths["jasmine"] = '/test/jasmine/js/lib/jasmine-2.0.0/jasmine';
 
 requirejs.s.contexts._.config.paths["jasmine-html"] = '/test/jasmine/js/lib/jasmine-2.0.0/jasmine-html';
@@ -18,14 +20,17 @@ requirejs.s.contexts._.config.shim["boot"] = {
   exports: 'jasmine'
 };
 
-require(["boot", "underscore", "js/SpecIndex.js", "/test/jasmine/js/common/beforeEach.js"], function(boot, _, indexSpecs) {
-  var extention, pathToSpec, specs;
-  pathToSpec = "/test/jasmine/js/spec/";
-  extention = ".js";
-  specs = _.map(indexSpecs, function(spec) {
-    return spec = pathToSpec + spec + extention;
+runTests = function(specToRun) {
+  return require(["boot", "underscore", "/test/jasmine/js/common/beforeEach.js"], function(boot, _) {
+    var extention, indexSpecs, pathToSpec, specs;
+    pathToSpec = "/test/jasmine/js/spec/";
+    extention = ".js";
+    indexSpecs = [specToRun];
+    specs = _.map(indexSpecs, function(spec) {
+      return spec = pathToSpec + spec + extention;
+    });
+    return require(specs, function(specs) {
+      return window.onload();
+    });
   });
-  return require(specs, function(specs) {
-    return window.onload();
-  });
-});
+};

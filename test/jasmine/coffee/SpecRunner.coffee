@@ -10,19 +10,23 @@ requirejs.s.contexts._.config.shim["jasmine"] = {exports: "jasmine"}
 requirejs.s.contexts._.config.shim["jasmine-html"] = {deps: ['jasmine'], exports: 'jasmine'}
 requirejs.s.contexts._.config.shim["boot"] = {deps: ['jasmine', 'jasmine-html'], exports: 'jasmine'}
 
-require [
-    "boot"
-    "underscore"
-    "js/SpecIndex.js"
-    "/test/jasmine/js/common/beforeEach.js"
-], (boot, _, indexSpecs) ->
+runTests = (specToRun) ->
+    require [
+        "boot"
+        "underscore"
+        "/test/jasmine/js/common/beforeEach.js"
+    ], (boot, _) ->
 
-    pathToSpec = "/test/jasmine/js/spec/"
-    extention = ".js"
+        pathToSpec = "/test/jasmine/js/spec/"
+        extention = ".js"
 
-    specs = _.map indexSpecs, (spec) ->
-        return spec = pathToSpec + spec + extention
+        indexSpecs = [
+            specToRun
+        ]
 
-    require specs, (specs) ->
-        window.onload()
+        specs = _.map indexSpecs, (spec) ->
+            return spec = pathToSpec + spec + extention
+
+        require specs, (specs) ->
+            window.onload()
 

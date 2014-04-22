@@ -6,8 +6,7 @@ ConnectMW = {}
 ConnectMW.options = 
     testHarness: "service/testharness"
     harness: "service/harness"
-    _baseDir: "test/jasmine/coffee"
-    jasmineSpec: "/spec/"
+    _baseDir: "test/jasmine/coffee/spec/"
 
 templatePathes = (path) ->
     grunt.file.read path
@@ -24,12 +23,12 @@ ConnectMW.getAllHarness = (req, res, next) ->
         body = 
             urls: []
 
-        walk.walkSync __dirname + '/../test/jasmine/coffee', (basedir, filename, stat) ->
+        walk.walkSync __dirname + '/../test/jasmine/coffee/spec', (basedir, filename, stat) ->
 
-            if (grunt.file.isFile basedir + "/" + filename) and basedir.match(new RegExp(ConnectMW.options.jasmineSpec))
+            if (grunt.file.isFile basedir + "/" + filename)
 
                 baseDirChunk = basedir.split(ConnectMW.options._baseDir)[1]
-                url = baseDirChunk + "/" + filename
+                url = baseDirChunk + "/" + filename.replace(".coffee", "")
 
                 body.urls.push {id: count, url: url}
                 count++

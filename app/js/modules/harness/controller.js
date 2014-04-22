@@ -36,7 +36,9 @@ define(["require", "when", "jquery"], function(require, When, $) {
         scriptConfig.onload = function() {
           var _require;
           _require = harness.require;
-          return _require(["wire"], function(wire) {});
+          return _require(["wire"], function(wire) {
+            return harness.runTests(item.url);
+          });
         };
         scriptConfig.onerror = function() {
           return console.log('could not load requireConfig!');
@@ -63,9 +65,7 @@ define(["require", "when", "jquery"], function(require, When, $) {
       return this.conf = this.getRequireJsConfig();
     };
 
-    HarnessController.prototype.loadHarness = function(playground) {
-      return this.playground = playground.$el.find(".playground");
-    };
+    HarnessController.prototype.loadHarness = function(playground) {};
 
     HarnessController.prototype.afterChildLoad = function(target) {
       return console.log("_____afterChildLoad", target);
