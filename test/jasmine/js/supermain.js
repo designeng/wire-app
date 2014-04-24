@@ -22,6 +22,14 @@ require.config({
       main: "rest",
       location: "../../bower_components/rest"
     }, {
+      name: "crossroads",
+      main: "crossroads",
+      location: "../../bower_components/crossroads/dist"
+    }, {
+      name: "signals",
+      main: "signals",
+      location: "../../bower_components/signals/dist"
+    }, {
       name: "backbone",
       main: "backbone",
       location: "../../bower_components/backbone"

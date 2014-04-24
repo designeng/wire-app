@@ -112,7 +112,7 @@ module.exports = (grunt) ->
         concat:
             main:
                 src: ["app/js/requireConfig.js", "app/js/main.js"]
-                dest: "app/js/main_with_require_config.js"
+                dest: "app/js/main.js"
             prebuild:
                 src: ["prebuild/js/requireConfig.js", "prebuild/js/main.js"]
                 dest: "prebuild/js/main.js"
@@ -156,3 +156,6 @@ module.exports = (grunt) ->
         content = content.replace /app\/js/, "public/js"
         grunt.file.write "prebuild/js/requireConfig.js", content
         grunt.log.write "OK"
+    
+    grunt.task.loadTasks __dirname + "/tasks/cleanjs"
+    grunt.registerTask 'nottwins', ["cleanNotTwins"]
