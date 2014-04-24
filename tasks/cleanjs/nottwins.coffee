@@ -9,13 +9,13 @@ module.exports = (grunt) ->
             fileArr = filename.split(".")
 
             if (grunt.file.isFile basedir + "/" + filename) and (fileArr[1] == "js") and !basedir.match("/js/lib")
-                file = basedir.replace("/app/js/", "/app/coffee/") + "/" + fileArr[0] + ".coffee"
-                if grunt.file.isFile(file)
+                file = basedir.replace("/app/js", "/app/coffee") + "/" + fileArr[0]
+                if grunt.file.isFile(file + ".coffee")
                     console.log "ex:::", fileArr[0] + ".coffee"
                 else
-                    console.log "NOT ex:::", file
+                    console.log "NOT ex:::", file + ".coffee"
 
-                    grunt.file.delete file
+                    grunt.file.delete file + ".js"
 
                     # console.log basedir.replace("/app/js/", "/app/coffee/"), fileArr[0]
 
