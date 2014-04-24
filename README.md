@@ -1,4 +1,3 @@
-Jasmine iframe tests loader
+Playground
 ==============
-
-Base application developed on the top of wire.js, Marionette.js
+wire.js & cola.js
